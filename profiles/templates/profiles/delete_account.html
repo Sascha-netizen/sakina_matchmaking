@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Account — Sakina{% endblock %}
+
+{% block content %}
 <h1>Delete Account</h1>
 <p>Are you sure you want to permanently delete your account? This cannot be undone.</p>
 <form method="post">
@@ -5,3 +10,4 @@
     <button type="submit">Yes, delete my account</button>
     <a href="{% url 'profile_detail' %}">Cancel</a>
 </form>
+{% endblock %}

@@ -1,0 +1,102 @@
+/* ── Google Fonts are loaded via base.html ── */
+
+/* ── CSS Variables ── */
+:root {
+    --parchment: #F9F6F0;
+    --pine-teal: #085041;
+    --seaweed: #1D9E75;
+    --honeydew: #E1F5EE;
+    --graphite: #2C2C2A;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Base ── */
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    background-color: var(--parchment);
+    color: var(--graphite);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Navbar ── */
+.navbar {
+    background-color: var(--pine-teal);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wordmark {
+    color: var(--parchment);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1.3rem;
+    margin-left: 0.4rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--honeydew);
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--seaweed);
+}
+
+/* ── Container ── */
+.container {
+    max-width: 860px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
+}
+
+/* ── Messages ── */
+.messages {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.messages li {
+    background-color: var(--honeydew);
+    border-left: 4px solid var(--seaweed);
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+}
+
+/* ── Footer ── */
+footer {
+    background-color: var(--pine-teal);
+    color: var(--honeydew);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    font-weight: 300;
+}
