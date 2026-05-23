@@ -3,13 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+import stripe
 
-# TODO: import Subscription and stripe once subscriptions app is built
-# from subscriptions.models import Subscription
-# import stripe
-
+from subscriptions.models import Subscription
 from .forms import ProfileForm
 from .models import Profile
+from subscriptions.decorators import subscription_required
 
 
 @login_required
@@ -30,12 +29,14 @@ def create_profile(request):
 
 
 @login_required
+@subscription_required
 def profile_detail(request):
     profile = get_object_or_404(Profile, user=request.user)
     return render(request, 'profiles/profile_detail.html', {'profile': profile})
 
 
 @login_required
+@subscription_required
 def profile_edit(request):
     profile = get_object_or_404(Profile, user=request.user)
     if request.method == 'POST':
@@ -56,19 +57,18 @@ def delete_account(request):
             with transaction.atomic():
                 if profile.photo:
                     profile.photo.delete(save=False)
-                # TODO: uncomment once subscriptions app is built
-                # subscriptions = Subscription.objects.filter(
-                #     user=request.user,
-                #     status='active'
-                # )
-                # for subscription in subscriptions:
-                #     if subscription.stripe_subscription_id:
-                #         stripe.Subscription.cancel(
-                #             subscription.stripe_subscription_id
-                #         )
-                #     subscription.status = 'cancelled'
-                #     subscription.cancelled_at = timezone.now()
-                #     subscription.save()
+                subscriptions = Subscription.objects.filter(
+                    user=request.user,
+                    status='active'
+                )
+                for subscription in subscriptions:
+                    if subscription.stripe_subscription_id:
+                        stripe.Subscription.cancel(
+                            subscription.stripe_subscription_id
+                        )
+                    subscription.status = 'cancelled'
+                    subscription.cancelled_at = timezone.now()
+                    subscription.save()
                 request.user.delete()
             messages.success(
                 request,
