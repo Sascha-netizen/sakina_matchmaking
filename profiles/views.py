@@ -31,6 +31,8 @@ def create_profile(request):
 @login_required
 @subscription_required
 def profile_detail(request):
+    if not hasattr(request.user, 'profile'):
+        return redirect('profile_create')
     profile = get_object_or_404(Profile, user=request.user)
     return render(request, 'profiles/profile_detail.html', {'profile': profile})
 
