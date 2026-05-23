@@ -85,13 +85,15 @@ def handle_checkout_completed(session):
         tz=timezone.utc
     )
 
-    Subscription.objects.create(
-        user=user,
-        stripe_customer_id=customer_id,
+    Subscription.objects.get_or_create(
         stripe_subscription_id=subscription_id,
-        status=Subscription.Status.ACTIVE,
-        started_at=timezone.now(),
-        expires_at=expires_at,
+        defaults={
+            'user': user,
+            'stripe_customer_id': customer_id,
+            'status': Subscription.Status.ACTIVE,
+            'started_at': timezone.now(),
+            'expires_at': expires_at,
+        }
     )
 
 
