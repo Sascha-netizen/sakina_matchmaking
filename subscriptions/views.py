@@ -15,6 +15,13 @@ User = get_user_model()
 
 @login_required
 def create_checkout_session(request):
+    already_subscribed = Subscription.objects.filter(
+        user=request.user,
+        status=Subscription.Status.ACTIVE,
+    ).exists()
+    if already_subscribed:
+        return redirect('subscriptions:success')
+    
     checkout_session = stripe.checkout.Session.create(
         customer_email=request.user.email,
         payment_method_types=['card'],
