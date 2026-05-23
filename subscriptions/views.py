@@ -30,7 +30,7 @@ def create_checkout_session(request):
             'quantity': 1,
         }],
         mode='subscription',
-        success_url=request.build_absolute_uri('/subscriptions/success/'),
+        success_url=request.build_absolute_uri('/profile/create/'),
         cancel_url=request.build_absolute_uri('/subscriptions/cancel/'),
     )
     return redirect(checkout_session.url)
