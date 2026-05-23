@@ -13,6 +13,6 @@ def subscription_required(view_func):
             status=Subscription.Status.ACTIVE
         ).exists()
         if not has_active_sub:
-            return redirect('create_checkout_session')
+            return redirect('subscriptions:checkout')
         return view_func(request, *args, **kwargs)
     return wrapper
