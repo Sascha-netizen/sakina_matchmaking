@@ -29,6 +29,7 @@ class Profile(models.Model):
         SINGLE = 'SI', 'Single'
         DIVORCED = 'DI', 'Divorced'
         WIDOWED = 'WI', 'Widowed'
+        MARRIED = 'MR', 'Married'
 
     class Religiosity(models.IntegerChoices):
         CULTURAL = 1, 'Cultural'
