@@ -23,5 +23,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('profile/', include('profiles.urls')),
     path('subscriptions/', include('subscriptions.urls')),
+    path('matching/', include('matching.urls')),
     path('', views.index, name='index'),
 ]
