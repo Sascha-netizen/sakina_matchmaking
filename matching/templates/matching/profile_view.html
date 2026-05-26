@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ viewed_profile.user.first_name }} — Sakina{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <a href="{% url 'matching:matches' %}">← Back to matches</a>
+
+    {% if viewed_profile.photo %}
+        <img src="{{ viewed_profile.photo.url }}" alt="Profile photo">
+    {% endif %}
+
+    <h1>{{ viewed_profile.user.first_name }} {{ viewed_profile.user.last_name }}</h1>
+
+    {% if score %}
+        <p>{{ score.score }}% match</p>
+    {% endif %}
+
+    <p>{{ viewed_profile.age }} years old · {{ viewed_profile.get_gender_display }}</p>
+    <p>{{ viewed_profile.city }}, {{ viewed_profile.country }}</p>
+    <p>{{ viewed_profile.get_sect_display }} · {{ viewed_profile.get_religiosity_level_display }}</p>
+    <p>{{ viewed_profile.occupation }}</p>
+    <p>{{ viewed_profile.get_education_display }}</p>
+    <p>{{ viewed_profile.languages }}</p>
+    <p>{{ viewed_profile.bio }}</p>
+</div>
+{% endblock %}
