@@ -8,4 +8,5 @@ urlpatterns = [
     path('profile/<int:profile_id>/', views.profile_view, name='profile_view'),
     path('inbox/', views.inbox, name='inbox'),
     path('conversation/<int:user_id>/', views.conversation, name='conversation'),
+    path('refresh/', views.refresh_matches, name='refresh_matches'),
 ]

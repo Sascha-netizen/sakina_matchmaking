@@ -4,6 +4,8 @@
 <div class="container my-5">
     <h1 class="mb-4">Your Matches</h1>
 
+    <a href="{% url 'matching:refresh_matches' %}">Refresh Matches</a>
+
     {% if scores %}
         <div class="row">
             {% for score in scores %}

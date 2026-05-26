@@ -5,6 +5,7 @@ from django.utils import timezone
 
 from matching.models import CompatibilityScore, Message
 from profiles.models import Profile
+from matching.algorithm import calculate_compatibility
 
 
 def subscription_required(view_func):
@@ -101,3 +102,33 @@ def conversation(request, user_id):
         'messages': messages,
         'other_user': other_user,
     })
+
+@login_required
+@subscription_required
+def refresh_matches(request):
+    profile = request.user.profile
+    profiles = Profile.objects.filter(
+        completed=True
+    ).exclude(user=request.user)
+
+    for other_profile in profiles:
+        score = calculate_compatibility(profile, other_profile)
+        if score is None:
+            continue
+        # Check both directions
+        existing = CompatibilityScore.objects.filter(
+            Q(from_profile=profile, to_profile=other_profile) |
+            Q(from_profile=other_profile, to_profile=profile)
+        ).first()
+
+        if existing:
+            existing.score = score
+            existing.save()
+        else:
+            CompatibilityScore.objects.create(
+                from_profile=profile,
+                to_profile=other_profile,
+                score=score
+            )
+
+    return redirect('matching:matches')
