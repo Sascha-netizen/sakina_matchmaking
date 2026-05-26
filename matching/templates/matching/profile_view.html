@@ -23,5 +23,7 @@
     <p>{{ viewed_profile.get_education_display }}</p>
     <p>{{ viewed_profile.languages }}</p>
     <p>{{ viewed_profile.bio }}</p>
+
+    <a href="{% url 'matching:conversation' viewed_profile.id %}">Send a message</a>
 </div>
 {% endblock %}

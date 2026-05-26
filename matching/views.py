@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render, redirect
+from django.utils import timezone
 
-from matching.models import CompatibilityScore
+from matching.models import CompatibilityScore, Message
 from profiles.models import Profile
 
 
@@ -40,17 +41,63 @@ def profile_view(request, profile_id):
 
     if viewed_profile.user == request.user:
         return redirect('profile_detail')
-    
+
     if viewed_profile.profile_visibility == 'HI':
         return redirect('matching:matches')
-    
+
     user_profile = request.user.profile
-    score  = CompatibilityScore.objects.filter(
+    score = CompatibilityScore.objects.filter(
         Q(from_profile=user_profile, to_profile=viewed_profile) |
         Q(from_profile=viewed_profile, to_profile=user_profile)
     ).first()
 
-    return render(request, 'matching/profile_view.html',{
+    return render(request, 'matching/profile_view.html', {
         'viewed_profile': viewed_profile,
         'score': score,
+    })
+
+
+@login_required
+@subscription_required
+def inbox(request):
+    messages = Message.objects.filter(
+        recipient=request.user
+    ).select_related('sender').order_by('-sent_at')
+
+    return render(request, 'matching/inbox.html', {
+        'messages': messages,
+    })
+
+
+@login_required
+@subscription_required
+def conversation(request, user_id):
+    other_user = get_object_or_404(
+        Profile, id=user_id
+    ).user
+
+    messages = Message.objects.filter(
+        Q(sender=request.user, recipient=other_user) |
+        Q(sender=other_user, recipient=request.user)
+    ).order_by('sent_at')
+
+    # Mark unread messages as read
+    messages.filter(
+        recipient=request.user,
+        read_at__isnull=True
+    ).update(read_at=timezone.now())
+
+    if request.method == 'POST':
+        body = request.POST.get('body', '').strip()
+        if body:
+            Message.objects.create(
+                sender=request.user,
+                recipient=other_user,
+                body=body
+            )
+        return redirect('matching:conversation', user_id=user_id)
+
+    return render(request, 'matching/conversation.html', {
+        'messages': messages,
+        'other_user': other_user,
     })

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Conversation — Sakina{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <a href="{% url 'matching:inbox' %}">← Back to inbox</a>
+
+    <h1>{{ other_user.first_name }} {{ other_user.last_name }}</h1>
+
+    <div>
+        {% for message in messages %}
+            <div>
+                <strong>
+                    {% if message.sender == request.user %}
+                        You
+                    {% else %}
+                        {{ message.sender.first_name }}
+                    {% endif %}
+                </strong>
+                — {{ message.sent_at|date:"d M Y H:i" }}
+                <p>{{ message.body }}</p>
+            </div>
+        {% empty %}
+            <p>No messages yet. Say hello.</p>
+        {% endfor %}
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="body" rows="4" placeholder="Write a message..."></textarea>
+        <button type="submit">Send</button>
+    </form>
+</div>
+{% endblock %}

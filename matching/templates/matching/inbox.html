@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Inbox — Sakina{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1>Inbox</h1>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>
+                <strong>{{ message.sender.first_name }} {{ message.sender.last_name }}</strong>
+                — {{ message.sent_at|date:"d M Y H:i" }}
+                {% if not message.read_at %}
+                    <span>(unread)</span>
+                {% endif %}
+                <br>
+                {{ message.body|truncatewords:20 }}
+                <br>
+                <a href="{% url 'matching:conversation' message.sender.profile.id %}">
+                    View conversation
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Your inbox is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
