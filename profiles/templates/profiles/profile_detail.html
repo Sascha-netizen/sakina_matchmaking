@@ -3,10 +3,34 @@
 {% block title %}My Profile — Sakina{% endblock %}
 
 {% block content %}
-<h1>My Profile</h1>
-<p>{{ profile.user.username }}</p>
-<p>{{ profile.age }} years old</p>
-<p>{{ profile.country }}, {{ profile.city }}</p>
-<p>{{ profile.get_sect_display }}</p>
-<p>{{ profile.bio }}</p>
+<div class="profile-container">
+    <h1>My Profile</h1>
+
+    {% if profile.photo %}
+        <img src="{{ profile.photo.url }}" alt="Profile photo" class="profile-photo">
+    {% endif %}
+
+    <p><strong>Username:</strong> {{ profile.user.username }}</p>
+    <p><strong>Age:</strong> {{ profile.age }}</p>
+    <p><strong>Gender:</strong> {{ profile.get_gender_display }}</p>
+    <p><strong>Ethnicity:</strong> {{ profile.ethnicity }}</p>
+    <p><strong>Country:</strong> {{ profile.country }}</p>
+    <p><strong>City:</strong> {{ profile.city }}</p>
+    <p><strong>Sect:</strong> {{ profile.get_sect_display }}</p>
+    <p><strong>Religiosity:</strong> {{ profile.get_religiosity_level_display }}</p>
+    <p><strong>Marital Status:</strong> {{ profile.get_marital_status_display }}</p>
+    <p><strong>Has Children:</strong> {{ profile.has_children|yesno:"Yes,No" }}</p>
+    <p><strong>Wants Children:</strong> {{ profile.wants_children|yesno:"Yes,No" }}</p>
+    <p><strong>Education:</strong> {{ profile.get_education_display }}</p>
+    <p><strong>Occupation:</strong> {{ profile.occupation }}</p>
+    <p><strong>Languages:</strong> {{ profile.languages }}</p>
+    <p><strong>Bio:</strong> {{ profile.bio }}</p>
+    <p><strong>Wali Preference:</strong> {{ profile.wali_preference|yesno:"Yes,No" }}</p>
+    <p><strong>Visibility:</strong> {{ profile.get_profile_visibility_display }}</p>
+
+    <div class="profile-actions">
+        <a href="{% url 'profile_edit' %}">Edit Profile</a>
+        <a href="{% url 'delete_account' %}">Delete Account</a>
+    </div>
+</div>
 {% endblock %}
