@@ -29,8 +29,9 @@
     <p><strong>Visibility:</strong> {{ profile.get_profile_visibility_display }}</p>
 
     <div class="profile-actions">
-        <a href="{% url 'profile_edit' %}">Edit Profile</a>
-        <a href="{% url 'delete_account' %}">Delete Account</a>
+    <a href="{% url 'profile_edit' %}">Edit Profile</a>
+    <a href="{% url 'matching:matches' %}">View My Matches</a>
+    <a href="{% url 'delete_account' %}">Delete Account</a>
     </div>
 </div>
 {% endblock %}

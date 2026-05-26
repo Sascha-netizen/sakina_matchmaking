@@ -1,0 +1,17 @@
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card h-100 shadow-sm">
+        {% if match.photo %}
+            <img src="{{ match.photo.url }}" class="card-img-top" alt="Profile photo">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ match.user.first_name }} {{ match.user.last_name }}</h5>
+            <p class="card-text text-muted">{{ match.city }}, {{ match.country }}</p>
+            <p class="card-text">{{ match.age }} years old · {{ match.get_sect_display }}</p>
+            <p class="card-text">{{ match.occupation }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <span class="badge bg-success fs-6">{{ score.score }}% match</span>
+            <a href="#" class="btn btn-sm btn-outline-secondary">View profile</a>
+        </div>
+    </div>
+</div>
