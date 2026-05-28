@@ -100,3 +100,14 @@ footer {
     font-size: 0.85rem;
     font-weight: 300;
 }
+
+/* ── Profile Photo ── */
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 1.5rem;
+    border: 3px solid var(--pine-teal);
+}
