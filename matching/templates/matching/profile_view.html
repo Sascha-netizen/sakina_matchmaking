@@ -6,11 +6,12 @@
 <div class="container my-5">
     <a href="{% url 'matching:matches' %}">← Back to matches</a>
 
-    {% if viewed_profile.photo %}
-        <img src="{{ viewed_profile.photo.url }}" alt="Profile photo">
-    {% endif %}
-
-    <h1>{{ viewed_profile.user.first_name }} {{ viewed_profile.user.last_name }}</h1>
+    <div class="profile-header">
+        {% if viewed_profile.photo %}
+            <img src="{{ viewed_profile.photo.url }}" alt="Profile photo" class="profile-photo">
+        {% endif %}
+        <h1>{{ viewed_profile.user.first_name }} {{ viewed_profile.user.last_name }}</h1>
+    </div>
 
     {% if score %}
         <p>{{ score.score }}% match</p>
