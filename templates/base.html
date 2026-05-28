@@ -19,6 +19,8 @@
             <ul class="nav-links">
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile_detail' %}">My Profile</a></li>
+                    <li><a href="{% url 'matching:matches' %}">Matches</a></li>
+                    <li><a href="{% url 'matching:inbox' %}">Inbox</a></li>
                     <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
                 {% else %}
                     <li><a href="{% url 'account_login' %}">Sign In</a></li>
@@ -38,7 +40,7 @@
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>Sakina &copy; 2025 &mdash; <span class="arabic">سكينة</span></p>
+        <p>Sakina &copy; 2026 &mdash; <span class="arabic">سكينة</span></p>
     </footer>
 </body>
 </html>
