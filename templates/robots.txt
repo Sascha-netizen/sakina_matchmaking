@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /accounts/
+Disallow: /profile/
+Disallow: /matching/
+Disallow: /subscriptions/
+Allow: /
+
+Sitemap: https://sakina-matchmaking-7bcbb6fbb05b.herokuapp.com/sitemap.xml
