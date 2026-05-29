@@ -3,6 +3,29 @@
 {% block title %}Sakina — Find Your Tranquility{% endblock %}
 
 {% block content %}
-<h1>Welcome to Sakina</h1>
-<p>Data-driven matchmaking for European Muslims.</p>
+<div class="hero">
+    <h1>Find Your Tranquility</h1>
+    <p class="hero-subtitle">Sakina is a dignified matchmaking platform for practising Muslims in Europe. Our compatibility algorithm matches you based on faith, values, and life goals.</p>
+    {% if not user.is_authenticated %}
+    <div class="hero-buttons">
+        <a href="{% url 'account_signup' %}" class="btn-primary">Join Sakina</a>
+        <a href="{% url 'account_login' %}" class="btn-secondary">Sign In</a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="features">
+    <div class="feature">
+        <h3>Faith-centred matching</h3>
+        <p>Our algorithm weighs sect, religiosity, and values — not just age and location.</p>
+    </div>
+    <div class="feature">
+        <h3>Dignified by design</h3>
+        <p>A platform built with the seriousness that Islamic marriage deserves.</p>
+    </div>
+    <div class="feature">
+        <h3>European Muslims</h3>
+        <p>Built for Muslims living in Europe, with profiles from across the continent.</p>
+    </div>
+</div>
 {% endblock %}

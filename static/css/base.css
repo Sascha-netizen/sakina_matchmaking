@@ -95,10 +95,22 @@ body {
 footer {
     background-color: var(--pine-teal);
     color: var(--honeydew);
-    text-align: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
     font-size: 0.85rem;
     font-weight: 300;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.footer-newsletter {
+    display: flex;
+    align-items: center;
 }
 
 /* ── Profile Photo ── */
@@ -117,4 +129,82 @@ footer {
     width: 100%;
     height: 200px;
     object-fit: cover;
+}
+
+/* ── Homepage ── */
+.hero {
+    text-align: center;
+    padding: 4rem 0 3rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--pine-teal);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--graphite);
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: var(--pine-teal);
+    color: var(--parchment);
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--seaweed);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--pine-teal);
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 400;
+    border: 2px solid var(--pine-teal);
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--pine-teal);
+    color: var(--parchment);
+}
+
+/* ── Features ── */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature {
+    background-color: var(--honeydew);
+    padding: 1.5rem;
+    border-radius: 4px;
+}
+
+.feature h3 {
+    color: var(--pine-teal);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
 }
