@@ -1,23 +1,23 @@
-<div class="col-md-6 col-lg-4 mb-4">
-    <div class="card h-100 shadow-sm">
-        {% if match.photo %}
-            <img src="{{ match.photo.url }}" class="card-img-top" alt="Profile photo">
-        {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">
-                {% if match.user.first_name %}
-                    {{ match.user.first_name }} {{ match.user.last_name }}
-                {% else %}
-                    {{ match.user.username }}
-                {% endif %}
-            </h5>
-            <p class="card-text text-muted">{{ match.city }}, {{ match.country }}</p>
-            <p class="card-text">{{ match.age }} years old · {{ match.get_sect_display }}</p>
-            <p class="card-text">{{ match.occupation }}</p>
-        </div>
-        <div class="card-footer d-flex justify-content-between align-items-center">
-            <span class="badge bg-success fs-6">{{ score.score }}% match</span>
-            <a href="{% url 'matching:profile_view' match.id %}" class="btn btn-sm btn-outline-secondary">View profile</a>
-        </div>
+<div class="match-card">
+    {% if match.photo %}
+        <img src="{{ match.photo.url }}" class="match-card-photo" alt="Profile photo">
+    {% else %}
+        <div class="match-card-photo match-card-no-photo"></div>
+    {% endif %}
+    <div class="match-card-body">
+        <h3 class="match-card-name">
+            {% if match.user.first_name %}
+                {{ match.user.first_name }} {{ match.user.last_name }}
+            {% else %}
+                {{ match.user.username }}
+            {% endif %}
+        </h3>
+        <p class="match-card-location">{{ match.city }}, {{ match.country }}</p>
+        <p class="match-card-details">{{ match.age }} years old · {{ match.get_sect_display }}</p>
+        <p class="match-card-occupation">{{ match.occupation }}</p>
+    </div>
+    <div class="match-card-footer">
+        <span class="match-score">{{ score.score }}%</span>
+        <a href="{% url 'matching:profile_view' match.id %}" class="btn-primary">View profile</a>
     </div>
 </div>

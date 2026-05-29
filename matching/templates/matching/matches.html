@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container my-5">
-    <h1 class="mb-4">Your Matches</h1>
-
-    <a href="{% url 'matching:refresh_matches' %}">Refresh Matches</a>
+<div class="matches-container">
+    <div class="matches-header">
+        <h1>Your Matches</h1>
+        <a href="{% url 'matching:refresh_matches' %}" class="btn-secondary">Refresh Matches</a>
+    </div>
 
     {% if scores %}
-        <div class="row">
+        <div class="matches-grid">
             {% for score in scores %}
                 {% if score.from_profile == profile %}
                     {% with match=score.to_profile %}
@@ -21,7 +22,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <p class="text-muted">No matches found yet. Make sure your profile is complete.</p>
+        <p>No matches found yet. Make sure your profile is complete.</p>
     {% endif %}
 </div>
 {% endblock %}
