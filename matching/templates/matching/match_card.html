@@ -4,7 +4,13 @@
             <img src="{{ match.photo.url }}" class="card-img-top" alt="Profile photo">
         {% endif %}
         <div class="card-body">
-            <h5 class="card-title">{{ match.user.first_name }} {{ match.user.last_name }}</h5>
+            <h5 class="card-title">
+                {% if match.user.first_name %}
+                    {{ match.user.first_name }} {{ match.user.last_name }}
+                {% else %}
+                    {{ match.user.username }}
+                {% endif %}
+            </h5>
             <p class="card-text text-muted">{{ match.city }}, {{ match.country }}</p>
             <p class="card-text">{{ match.age }} years old · {{ match.get_sect_display }}</p>
             <p class="card-text">{{ match.occupation }}</p>
