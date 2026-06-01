@@ -126,3 +126,26 @@ def handle_payment_failed(invoice):
         sub.save()
     except Subscription.DoesNotExist:
         pass
+
+
+@login_required
+def cancel_subscription(request):
+    if request.method == 'POST':
+        try:
+            sub = Subscription.objects.get(
+                user=request.user,
+                status=Subscription.Status.ACTIVE,
+            )
+            stripe.Subscription.delete(sub.stripe_subscription_id)
+            sub.status = Subscription.Status.CANCELLED
+            sub.cancelled_at = timezone.now()
+            sub.save()
+        except Subscription.DoesNotExist:
+            pass
+        return redirect('subscriptions:cancelled')
+    return render(request, 'subscriptions/cancel_confirm.html')
+
+
+@login_required
+def subscription_cancelled(request):
+    return render(request, 'subscriptions/cancelled.html')

@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
+{% block title %}Payment Unsuccessful — Sakina{% endblock %}
+
 {% block content %}
 <div class="container text-center mt-5">
-    <h2>Subscription cancelled</h2>
-    <p>You have not been charged. You can subscribe any time.</p>
-    <a href="/" class="btn">Return home</a>
+    <h2>Payment unsuccessful</h2>
+    <p>You have not been charged. Please try again or use a different card.</p>
+    <a href="{% url 'subscriptions:checkout' %}" class="btn">Try again</a>
+    <a href="{% url 'index' %}" class="btn">Return home</a>
 </div>
 {% endblock %}

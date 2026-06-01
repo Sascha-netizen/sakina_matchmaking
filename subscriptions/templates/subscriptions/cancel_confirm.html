@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Cancel Subscription — Sakina{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Cancel your subscription</h2>
+    <p>Are you sure? You will lose access to matches and messaging.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn">Yes, cancel my subscription</button>
+        <a href="{% url 'index' %}" class="btn">Keep my subscription</a>
+    </form>
+</div>
+{% endblock %}

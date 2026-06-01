@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Subscription Cancelled — Sakina{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Subscription cancelled</h2>
+    <p>You will no longer be charged.</p>
+    <a href="{% url 'index' %}" class="btn">Return home</a>
+</div>
+{% endblock %}
