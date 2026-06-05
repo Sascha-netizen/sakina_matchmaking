@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.conf import settings
 import stripe
 
 from subscriptions.models import Subscription
@@ -71,6 +73,21 @@ def delete_account(request):
                     subscription.status = 'cancelled'
                     subscription.cancelled_at = timezone.now()
                     subscription.save()
+                    send_mail(
+                        subject='Your Sakina subscription has been cancelled',
+                        message=(
+                            'Assalamu Alaykum,\n\n'
+                            'Your Sakina subscription has been cancelled. '
+                            'You will not be charged again.\n\n'
+                            'You can resubscribe at any time at '
+                            'https://sakina-matchmaking-7bcbb6fbb05b.herokuapp.com\n\n'
+                            'Barakallahu feekum,\n'
+                            'The Sakina Team'
+                        ),
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        recipient_list=[request.user.email],
+                        fail_silently=True,
+                    )
                 request.user.delete()
             messages.success(
                 request,
