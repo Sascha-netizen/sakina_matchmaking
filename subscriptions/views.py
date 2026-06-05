@@ -8,6 +8,7 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from .models import Subscription
+from django.core.mail import send_mail
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 User = get_user_model()
@@ -103,6 +104,24 @@ def handle_checkout_completed(session):
         }
     )
 
+    message = (
+        'Assalamu Alaykum,\n\n'
+        'Your subscription to Sakina has been confirmed for €9.99 per month until you cancel.\n\n'
+        'You now have full access to compatibility matches, '
+        'profile browsing, and direct messaging.\n\n'
+        'Visit Sakina: https://sakina-matchmaking-7bcbb6fbb05b.herokuapp.com\n\n'
+        'Barakallahu feekum,\n'
+        'The Sakina Team'
+    )
+
+    send_mail(
+        subject='Welcome to Sakina — your subscription is confirmed',
+        message=message,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[customer_email],
+        fail_silently=True,
+    )
+
 
 def handle_subscription_deleted(stripe_sub):
     try:
@@ -140,6 +159,21 @@ def cancel_subscription(request):
             sub.status = Subscription.Status.CANCELLED
             sub.cancelled_at = timezone.now()
             sub.save()
+            send_mail(
+                subject='Your Sakina subscription has been cancelled',
+                message=(
+                    'Assalamu Alaykum,\n\n'
+                    'Your Sakina subscription has been cancelled. '
+                    'You will not be charged again.\n\n'
+                    'You can resubscribe at any time at '
+                    'https://sakina-matchmaking-7bcbb6fbb05b.herokuapp.com\n\n'
+                    'Barakallahu feekum,\n'
+                    'The Sakina Team'
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[request.user.email],
+                fail_silently=True,
+            )
         except Subscription.DoesNotExist:
             pass
         return redirect('subscriptions:cancelled')
