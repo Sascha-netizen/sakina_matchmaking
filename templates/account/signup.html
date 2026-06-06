@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1>Sign Up</h1>
+<p class="form-hint">Choose a username that represents you — for example <strong>sara_ahmed</strong> or <strong>yusuf_ali</strong>.</p>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
