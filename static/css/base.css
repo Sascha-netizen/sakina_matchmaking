@@ -289,3 +289,9 @@ footer {
     font-weight: 700;
     color: var(--seaweed);
 }
+
+.nav-greeting {
+    color: var(--honeydew);
+    font-weight: 300;
+    font-size: 0.95rem;
+}

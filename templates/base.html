@@ -21,6 +21,7 @@
             </a>
             <ul class="nav-links">
                 {% if user.is_authenticated %}
+                    <li class="nav-greeting">Hello, {{ user.username }}</li>
                     <li><a href="{% url 'profile_detail' %}">My Profile</a></li>
                     <li><a href="{% url 'matching:matches' %}">Matches</a></li>
                     <li><a href="{% url 'matching:inbox' %}">Inbox</a></li>
