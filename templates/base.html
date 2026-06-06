@@ -24,7 +24,9 @@
                     <li class="nav-greeting">Hello, {{ user.username }}</li>
                     <li><a href="{% url 'profile_detail' %}">My Profile</a></li>
                     <li><a href="{% url 'matching:matches' %}">Matches</a></li>
-                    <li><a href="{% url 'matching:inbox' %}">Inbox</a></li>
+                    <li>
+                        <a href="{% url 'matching:inbox' %}">Inbox{% if unread_message_count %} ({{ unread_message_count }}){% endif %}</a>
+                    </li>
                     <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
                 {% else %}
                     <li><a href="{% url 'account_login' %}">Sign In</a></li>
