@@ -8,7 +8,7 @@ from django.conf import settings
 import stripe
 
 from subscriptions.models import Subscription
-from .forms import ProfileForm
+from .forms import ProfileForm, ProfileEditForm
 from .models import Profile
 from subscriptions.decorators import subscription_required
 
@@ -44,12 +44,12 @@ def profile_detail(request):
 def profile_edit(request):
     profile = get_object_or_404(Profile, user=request.user)
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        form = ProfileEditForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             return redirect('profile_detail')
     else:
-        form = ProfileForm(instance=profile)
+        form = ProfileEditForm(instance=profile)
     return render(request, 'profiles/profile_edit.html', {'form': form})
 
 
