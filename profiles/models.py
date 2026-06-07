@@ -1,15 +1,12 @@
 from datetime import date
+from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 
 
 def validate_age(value):
-    today = date.today()
-    age = today.year - value.year - (
-        (today.month, today.day) < (value.month, value.day)
-    )
-    if age < 18:
+    if relativedelta(date.today(), value).years < 18:
         raise ValidationError("Users must be at least 18 years old.")
 
 
@@ -117,15 +114,7 @@ class Profile(models.Model):
 
     @property
     def age(self):
-        today = date.today()
-        return (
-            today.year
-            - self.date_of_birth.year
-            - (
-                (today.month, today.day)
-                < (self.date_of_birth.month, self.date_of_birth.day)
-            )
-        )
+        return relativedelta(date.today(), self.date_of_birth).years
 
     def __str__(self):
         return f"{self.user.username}'s profile"

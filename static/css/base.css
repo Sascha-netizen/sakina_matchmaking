@@ -295,3 +295,16 @@ footer {
     font-weight: 300;
     font-size: 0.95rem;
 }
+
+.form-errors {
+    background-color: #fdecea;
+    border: 1px solid #e74c3c;
+    border-radius: 6px;
+    color: #c0392b;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+}
+
+.form-errors p {
+    margin: 4px 0;
+}
