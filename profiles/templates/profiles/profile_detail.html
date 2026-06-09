@@ -3,35 +3,90 @@
 {% block title %}My Profile — Sakina{% endblock %}
 
 {% block content %}
-<div class="profile-container">
-    <h1>My Profile</h1>
+<div class="profile-detail">
 
-    {% if profile.photo %}
-        <img src="{{ profile.photo.url }}" alt="Profile photo" class="profile-photo">
+    <div class="profile-header">
+        {% if profile.photo %}
+            <img src="{{ profile.photo.url }}" alt="Profile photo" class="profile-photo">
+        {% endif %}
+        <div class="profile-header-info">
+            <h1>{{ profile.user.username }}</h1>
+            <p class="profile-tagline">{{ profile.age }} &middot; {{ profile.get_gender_display }} &middot; {{ profile.city }}, {{ profile.country }}</p>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h2>Faith</h2>
+        <div class="profile-field">
+            <span class="profile-label">Sect</span>
+            <span class="profile-value">{{ profile.get_sect_display }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Religiosity</span>
+            <span class="profile-value">{{ profile.get_religiosity_level_display }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Wali Preference</span>
+            <span class="profile-value">{{ profile.wali_preference|yesno:"Yes,No" }}</span>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h2>Background</h2>
+        <div class="profile-field">
+            <span class="profile-label">Ethnicity</span>
+            <span class="profile-value">{{ profile.ethnicity }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Languages</span>
+            <span class="profile-value">{{ profile.languages }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Education</span>
+            <span class="profile-value">{{ profile.get_education_display }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Occupation</span>
+            <span class="profile-value">{{ profile.occupation }}</span>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h2>Family</h2>
+        <div class="profile-field">
+            <span class="profile-label">Marital Status</span>
+            <span class="profile-value">{{ profile.get_marital_status_display }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Has Children</span>
+            <span class="profile-value">{{ profile.has_children|yesno:"Yes,No" }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Wants Children</span>
+            <span class="profile-value">{{ profile.wants_children|yesno:"Yes,No" }}</span>
+        </div>
+    </div>
+
+    {% if profile.bio %}
+    <div class="profile-section">
+        <h2>About</h2>
+        <p class="profile-bio">{{ profile.bio }}</p>
+    </div>
     {% endif %}
 
-    <p><strong>Username:</strong> {{ profile.user.username }}</p>
-    <p><strong>Age:</strong> {{ profile.age }}</p>
-    <p><strong>Gender:</strong> {{ profile.get_gender_display }}</p>
-    <p><strong>Ethnicity:</strong> {{ profile.ethnicity }}</p>
-    <p><strong>Country:</strong> {{ profile.country }}</p>
-    <p><strong>City:</strong> {{ profile.city }}</p>
-    <p><strong>Sect:</strong> {{ profile.get_sect_display }}</p>
-    <p><strong>Religiosity:</strong> {{ profile.get_religiosity_level_display }}</p>
-    <p><strong>Marital Status:</strong> {{ profile.get_marital_status_display }}</p>
-    <p><strong>Has Children:</strong> {{ profile.has_children|yesno:"Yes,No" }}</p>
-    <p><strong>Wants Children:</strong> {{ profile.wants_children|yesno:"Yes,No" }}</p>
-    <p><strong>Education:</strong> {{ profile.get_education_display }}</p>
-    <p><strong>Occupation:</strong> {{ profile.occupation }}</p>
-    <p><strong>Languages:</strong> {{ profile.languages }}</p>
-    <p><strong>Bio:</strong> {{ profile.bio }}</p>
-    <p><strong>Wali Preference:</strong> {{ profile.wali_preference|yesno:"Yes,No" }}</p>
-    <p><strong>Visibility:</strong> {{ profile.get_profile_visibility_display }}</p>
+    <div class="profile-section">
+        <h2>Settings</h2>
+        <div class="profile-field">
+            <span class="profile-label">Visibility</span>
+            <span class="profile-value">{{ profile.get_profile_visibility_display }}</span>
+        </div>
+    </div>
 
     <div class="profile-actions">
-    <a href="{% url 'profile_edit' %}">Edit Profile</a>
-    <a href="{% url 'matching:matches' %}">View My Matches</a>
-    <a href="{% url 'delete_account' %}">Delete Account</a>
+        <a href="{% url 'profile_edit' %}" class="btn-primary">Edit Profile</a>
+        <a href="{% url 'matching:matches' %}" class="btn-secondary">View My Matches</a>
+        <a href="{% url 'delete_account' %}" class="btn-danger">Delete Account</a>
     </div>
+
 </div>
 {% endblock %}

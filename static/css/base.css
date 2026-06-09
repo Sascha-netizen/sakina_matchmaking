@@ -443,3 +443,86 @@ footer {
 .message-form button:hover {
     background-color: var(--seaweed);
 }
+
+/* ── Profile Detail ── */
+.profile-detail {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-header-info h1 {
+    margin-bottom: 0.25rem;
+}
+
+.profile-tagline {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.profile-section {
+    margin-bottom: 2rem;
+}
+
+.profile-section h2 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--seaweed);
+    border-bottom: 1px solid var(--honeydew);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.profile-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--honeydew);
+}
+
+.profile-label {
+    font-weight: 700;
+    color: var(--graphite);
+    font-size: 0.9rem;
+}
+
+.profile-value {
+    color: var(--graphite);
+    font-size: 0.9rem;
+}
+
+.profile-bio {
+    line-height: 1.7;
+    color: var(--graphite);
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: #c0392b;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 400;
+    border: 2px solid #c0392b;
+    transition: all 0.2s;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    color: white;
+}
