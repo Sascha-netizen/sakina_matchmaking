@@ -66,8 +66,8 @@ def inbox(request):
     ).select_related('sender').order_by('-sent_at')
 
     return render(request, 'matching/inbox.html', {
-        'messages': messages,
-    })
+    'inbox_messages': messages,
+})
 
 
 @login_required
@@ -99,9 +99,9 @@ def conversation(request, user_id):
         return redirect('matching:conversation', user_id=user_id)
 
     return render(request, 'matching/conversation.html', {
-        'messages': messages,
-        'other_user': other_user,
-    })
+    'conversation_messages': messages,
+    'other_user': other_user,
+})
 
 @login_required
 @subscription_required
