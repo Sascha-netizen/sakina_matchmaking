@@ -1,30 +1,83 @@
 {% extends "base.html" %}
 
-{% block title %}{{ viewed_profile.user.first_name }} — Sakina{% endblock %}
+{% block title %}{{ viewed_profile.user.username }} — Sakina{% endblock %}
 
 {% block content %}
-<div class="container my-5">
-    <a href="{% url 'matching:matches' %}">← Back to matches</a>
+<a href="{% url 'matching:matches' %}" class="back-link">← Back to matches</a>
+
+<div class="profile-detail">
 
     <div class="profile-header">
         {% if viewed_profile.photo %}
             <img src="{{ viewed_profile.photo.url }}" alt="Profile photo" class="profile-photo">
         {% endif %}
-        <h1>{{ viewed_profile.user.first_name }} {{ viewed_profile.user.last_name }}</h1>
+        <div class="profile-header-info">
+            <h1>{{ viewed_profile.user.username }}</h1>
+            <p class="profile-tagline">{{ viewed_profile.age }} · {{ viewed_profile.get_gender_display }} · {{ viewed_profile.city }}, {{ viewed_profile.country }}</p>
+            {% if score %}
+                <p class="match-score-badge">{{ score.score }}% match</p>
+            {% endif %}
+        </div>
     </div>
 
-    {% if score %}
-        <p>{{ score.score }}% match</p>
+    <div class="profile-section">
+        <h2>Faith</h2>
+        <div class="profile-field">
+            <span class="profile-label">Sect</span>
+            <span class="profile-value">{{ viewed_profile.get_sect_display }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Religiosity</span>
+            <span class="profile-value">{{ viewed_profile.get_religiosity_level_display }}</span>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h2>Background</h2>
+        <div class="profile-field">
+            <span class="profile-label">Ethnicity</span>
+            <span class="profile-value">{{ viewed_profile.ethnicity }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Languages</span>
+            <span class="profile-value">{{ viewed_profile.languages }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Education</span>
+            <span class="profile-value">{{ viewed_profile.get_education_display }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Occupation</span>
+            <span class="profile-value">{{ viewed_profile.occupation }}</span>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h2>Family</h2>
+        <div class="profile-field">
+            <span class="profile-label">Marital Status</span>
+            <span class="profile-value">{{ viewed_profile.get_marital_status_display }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Has Children</span>
+            <span class="profile-value">{{ viewed_profile.has_children|yesno:"Yes,No" }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-label">Wants Children</span>
+            <span class="profile-value">{{ viewed_profile.wants_children|yesno:"Yes,No" }}</span>
+        </div>
+    </div>
+
+    {% if viewed_profile.bio %}
+    <div class="profile-section">
+        <h2>About</h2>
+        <p class="profile-bio">{{ viewed_profile.bio }}</p>
+    </div>
     {% endif %}
 
-    <p>{{ viewed_profile.age }} years old · {{ viewed_profile.get_gender_display }}</p>
-    <p>{{ viewed_profile.city }}, {{ viewed_profile.country }}</p>
-    <p>{{ viewed_profile.get_sect_display }} · {{ viewed_profile.get_religiosity_level_display }}</p>
-    <p>{{ viewed_profile.occupation }}</p>
-    <p>{{ viewed_profile.get_education_display }}</p>
-    <p>{{ viewed_profile.languages }}</p>
-    <p>{{ viewed_profile.bio }}</p>
+    <div class="profile-actions">
+        <a href="{% url 'matching:conversation' viewed_profile.id %}" class="btn-primary">Send a message</a>
+    </div>
 
-    <a href="{% url 'matching:conversation' viewed_profile.id %}">Send a message</a>
 </div>
 {% endblock %}
