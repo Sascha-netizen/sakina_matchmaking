@@ -526,3 +526,53 @@ footer {
     background-color: #c0392b;
     color: white;
 }
+
+/* ── Forms ── */
+form p {
+    margin-bottom: 1rem;
+}
+
+form p label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--graphite);
+}
+
+form p input[type="text"],
+form p input[type="email"],
+form p input[type="date"],
+form p input[type="password"],
+form p select,
+form p textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    background-color: white;
+}
+
+form p input[type="checkbox"] {
+    margin-top: 0.3rem;
+}
+
+form button[type="submit"] {
+    background-color: var(--pine-teal);
+    color: var(--parchment);
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+form button[type="submit"]:hover {
+    background-color: var(--seaweed);
+}
