@@ -7,7 +7,22 @@
 <p class="form-hint">Choose a username that represents you — for example <strong>sara_ahmed</strong> or <strong>yusuf_ali</strong>.</p>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for field in form %}
+        <div class="form-field">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+                <div class="helptext">{{ field.help_text }}</div>
+            {% endif %}
+            {% if field.errors %}
+                <div class="field-errors">
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
     <button type="submit">Sign Up</button>
 </form>
 <p>Already have an account? <a href="{% url 'account_login' %}">Sign In</a></p>
