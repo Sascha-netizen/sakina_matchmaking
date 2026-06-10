@@ -587,3 +587,35 @@ form button[type="submit"]:hover {
     border-radius: 12px;
     margin-top: 0.5rem;
 }
+
+/* ── Form fields ── */
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.helptext {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.3rem;
+}
+
+.field-errors p {
+    color: #c0392b;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="password"] {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    background-color: white;
+    margin-top: 0.2rem;
+}
