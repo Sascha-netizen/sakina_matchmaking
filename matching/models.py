@@ -44,6 +44,7 @@ class Message(models.Model):
 
     class Meta:
         ordering = ['sent_at']
-    
+
     def __str__(self):
-        return f"{self.sender} → {self.recipient}: {self.sent_at:%Y-%m-%d %H:%M}"
+        sent = self.sent_at.strftime('%Y-%m-%d %H:%M')
+        return f"{self.sender} → {self.recipient}: {sent}"
