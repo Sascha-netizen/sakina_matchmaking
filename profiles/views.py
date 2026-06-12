@@ -36,7 +36,9 @@ def profile_detail(request):
     if not hasattr(request.user, 'profile'):
         return redirect('profile_create')
     profile = get_object_or_404(Profile, user=request.user)
-    return render(request, 'profiles/profile_detail.html', {'profile': profile})
+    return render(
+        request, 'profiles/profile_detail.html', {'profile': profile}
+    )
 
 
 @login_required
@@ -80,7 +82,8 @@ def delete_account(request):
                             'Your Sakina subscription has been cancelled. '
                             'You will not be charged again.\n\n'
                             'You can resubscribe at any time at '
-                            'https://sakina-matchmaking-7bcbb6fbb05b.herokuapp.com\n\n'
+                            'https://sakina-matchmaking-7bcbb6fbb05b'
+                            '.herokuapp.com\n\n'
                             'Barakallahu feekum,\n'
                             'The Sakina Team'
                         ),
