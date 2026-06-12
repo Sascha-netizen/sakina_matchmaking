@@ -21,6 +21,8 @@ def subscription_required(view_func):
 @login_required
 @subscription_required
 def matches(request):
+    if not hasattr(request.user, 'profile'):
+        return redirect('create_profile')
     profile = request.user.profile
 
     scores = CompatibilityScore.objects.filter(
@@ -38,6 +40,8 @@ def matches(request):
 @login_required
 @subscription_required
 def profile_view(request, profile_id):
+    if not hasattr(request.user, 'profile'):
+        return redirect('create_profile')
     viewed_profile = get_object_or_404(Profile, id=profile_id)
 
     if viewed_profile.user == request.user:
@@ -106,6 +110,8 @@ def conversation(request, user_id):
 @login_required
 @subscription_required
 def refresh_matches(request):
+    if not hasattr(request.user, 'profile'):
+        return redirect('create_profile')
     profile = request.user.profile
     profiles = Profile.objects.filter(
         completed=True
