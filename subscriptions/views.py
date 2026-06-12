@@ -22,7 +22,7 @@ def create_checkout_session(request):
     ).exists()
     if already_subscribed:
         return redirect('subscriptions:success')
-    
+
     checkout_session = stripe.checkout.Session.create(
         customer_email=request.user.email,
         payment_method_types=['card'],
@@ -106,10 +106,12 @@ def handle_checkout_completed(session):
 
     message = (
         'Assalamu Alaykum,\n\n'
-        'Your subscription to Sakina has been confirmed for €9.99 per month until you cancel.\n\n'
+        'Your subscription to Sakina has been confirmed '
+        'for €9.99 per month until you cancel.\n\n'
         'You now have full access to compatibility matches, '
         'profile browsing, and direct messaging.\n\n'
-        'Visit Sakina: https://sakina-matchmaking-7bcbb6fbb05b.herokuapp.com\n\n'
+        'Visit Sakina: https://sakina-matchmaking-7bcbb6fbb05b'
+        '.herokuapp.com\n\n'
         'Barakallahu feekum,\n'
         'The Sakina Team'
     )

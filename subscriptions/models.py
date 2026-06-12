@@ -1,13 +1,13 @@
 from django.conf import settings
 from django.db import models
 
-# Create your models here.
+
 class Subscription(models.Model):
     class Status(models.TextChoices):
         ACTIVE = 'active', 'Active'
         CANCELLED = 'cancelled', 'Cancelled'
         EXPIRED = 'expired', 'Expired'
-    
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -30,7 +30,8 @@ class Subscription(models.Model):
     started_at = models.DateTimeField(
         null=True,
         blank=True
-    )    
+    )
+
     expires_at = models.DateTimeField(
         null=True,
         blank=True
@@ -38,14 +39,14 @@ class Subscription(models.Model):
     cancelled_at = models.DateTimeField(
         null=True,
         blank=True
-    )      
+    )
 
     class Meta:
         ordering = ['-started_at']
-    
+
     @property
     def is_active(self):
         return self.status == self.Status.ACTIVE
-    
+
     def __str__(self):
         return f"{self.user.email} - {self.status}"
