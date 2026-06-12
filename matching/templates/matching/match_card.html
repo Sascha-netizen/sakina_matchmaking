@@ -5,13 +5,13 @@
         <div class="match-card-photo match-card-no-photo"></div>
     {% endif %}
     <div class="match-card-body">
-        <h3 class="match-card-name">
+        <h2 class="match-card-name">
             {% if match.user.first_name %}
                 {{ match.user.first_name }} {{ match.user.last_name }}
             {% else %}
                 {{ match.user.username }}
             {% endif %}
-        </h3>
+        </h2>
         <p class="match-card-location">{{ match.city }}, {{ match.country }}</p>
         <p class="match-card-details">{{ match.age }} years old · {{ match.get_sect_display }}</p>
         <p class="match-card-occupation">{{ match.occupation }}</p>
