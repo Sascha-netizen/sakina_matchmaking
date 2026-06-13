@@ -522,77 +522,77 @@ A married man may be matched with a single woman at a reduced marital status sco
 
 Sakina's homepage introduces the platform to anonymous visitors with a clear value proposition and calls to action.
 
-![Landing page](docs/features/landing-page.png)
+![Landing page](docs/testing/features/landing-page.png)
 
 ### User Registration
 
 New users can register with a username, email, and password.
 
-![Sign up page](docs/features/sign-up-page.png)
+![Sign up page](docs/testing/features/sign-up-page.png)
 
 ### Authentication
 
 Users sign in securely. A flash message confirms successful login and the navbar updates to show authenticated links.
 
-![Sign in success](docs/features/feature-sign-in-success.png)
+![Sign in success](docs/testing/features/feature-sign-in-success.png)
 
 ### Stripe Subscription
 
 After registration, users are directed to a Stripe checkout page to subscribe for €9.99 per month before accessing any features.
 
-![Stripe checkout](docs/features/feature-stripe-checkout.png)
+![Stripe checkout](docs/testing/features/feature-stripe-checkout.png)
 
 ### Create Profile
 
 Subscribed users complete a detailed profile covering faith, background, family goals, and personal information. Age validation ensures users are 18 or over.
 
-![Create profile](docs/features/feature-create-profile.png)
+![Create profile](docs/testing/features/feature-create-profile.png)
 
-![Age validation](docs/features/age-validation.png)
+![Age validation](docs/testing/features/age-validation.png)
 
 ### Profile Detail
 
 Users can view their own profile with all sections displayed clearly, and access edit, matches, and account deletion options.
 
-![Profile detail](docs/features/feature-profile-detail-1.png)
+![Profile detail](docs/testing/features/feature-profile-detail-1.png)
 
-![Profile detail lower](docs/features/feature-profile-detail-2.png)
+![Profile detail lower](docs/testing/features/feature-profile-detail-2.png)
 
 ### Compatibility Matches
 
 The matching algorithm calculates compatibility scores against all other profiles. Before running, the matches page shows an empty state. After refreshing, ranked matches appear with photos, key details, and scores.
 
-![Matches empty](docs/features/feature-matches-empty.png)
+![Matches empty](docs/testing/features/feature-matches-empty.png)
 
-![Matches](docs/features/feature-matches.png)
+![Matches](docs/testing/features/feature-matches.png)
 
 ### Profile View
 
 Subscribers can view another user's full profile, including their compatibility score.
 
-![Profile match view](docs/features/feature-profile-match.png)
+![Profile match view](docs/testing/features/feature-profile-match.png)
 
 ### Messaging
 
 Users can send a message directly from a match's profile page.
 
-![Send message](docs/features/feature-send-message.png)
+![Send message](docs/testing/features/feature-send-message.png)
 
 ### Conversation
 
 The conversation view shows the full message thread between two users.
 
-![Conversation](docs/features/feature-conversation-1.png)
+![Conversation](docs/testing/features/feature-conversation-1.png)
 
-![Conversation reply](docs/features/feature-conversation-reply-youssef.png)
+![Conversation reply](docs/testing/features/feature-conversation-reply-youssef.png)
 
 ### Inbox
 
 The inbox displays all received messages. An unread count appears in the navbar when new messages arrive.
 
-![Inbox notification](docs/features/feature-inbox-notification-youssef.png)
+![Inbox notification](docs/testing/features/feature-inbox-notification-youssef.png)
 
-![Inbox](docs/features/feature-inbox-youssef.png)
+![Inbox](docs/testing/features/feature-inbox-youssef.png)
 
 ### Implementation
 
