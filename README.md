@@ -1023,6 +1023,17 @@ Covers the scoring logic of the compatibility algorithm.
 
 ![Password reset complete](docs/testing/passwords/password-reset-complete.PNG)
 
+## SEO
+
+### Sitemap
+
+![Sitemap](docs/testing/seo/sitemap-xml.png)
+
+### Robots.txt
+
+![Robots.txt](docs/testing/seo/screenshot-robots-txt.png)
+
+
 ## HTML Validation
 
 All pages were validated using the [W3C HTML Validator](https://validator.w3.org/).
@@ -1137,6 +1148,7 @@ All Python files were validated using the [CI Python Linter](https://pep8ci.hero
 ## JavaScript Validation
 
 No custom JavaScript was written for this project. The Stripe checkout redirect is handled server-side in `subscriptions/views.py`. The EmailOctopus newsletter script in the footer is third-party code and not subject to validation.
+
 
 ## Bugs
 
