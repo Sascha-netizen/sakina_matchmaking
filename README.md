@@ -1249,3 +1249,34 @@ Sakina is deployed on Heroku at [sakina-matchmaking-7bcbb6fbb05b.herokuapp.com](
 ```bash
    python manage.py runserver
 ```
+
+
+## Test Accounts
+
+The following accounts are available for assessment purposes.
+
+### Superuser
+
+| Field | Value |
+|-------|-------|
+| Username | Rasheed |
+| Email | sascha.r.klement@gmail.com |
+| Password | 1Hundchen |
+
+### Test User — Female Profile
+
+| Field | Value |
+|-------|-------|
+| Username | rania_hassan |
+| Email | sascha.r.klement+female@gmail.com |
+| Password | 3Hundchen |
+
+### Test User — Male Profile
+
+| Field | Value |
+|-------|-------|
+| Username | youssef_ali |
+| Email | sascha.r.klement+male@gmail.com |
+| Password | 2Hundchen |
+
+Both test users are active subscribers with completed profiles and a compatibility score of 82%. Log in as either to view matches, browse profiles, and test the messaging system.
