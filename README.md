@@ -353,7 +353,21 @@ As an admin, I can manage and moderate user profiles, so that the platform remai
 - [x] Configure admin display and filters
 
 
+## Wireframes
 
+Low-fidelity wireframes were produced prior to development to plan the core page layouts.
+
+### Landing Page
+
+![Landing page wireframe](docs/wireframes/sakina_landing_wireframe.png)
+
+### Profile Page
+
+![Profile page wireframe](docs/wireframes/sakina_profile_wireframe.png)
+
+### Matches Page
+
+![Matches page wireframe](docs/wireframes/sakina_profile_wireframe.png)
 
 
 ## Entity-Relationship Diagram (ERD)
