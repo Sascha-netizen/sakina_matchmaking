@@ -619,3 +619,8 @@ form button[type="submit"]:hover {
     background-color: white;
     margin-top: 0.2rem;
 }
+
+footer a {
+    color: #E1F5EE;
+    margin-left: 0.5rem;
+}
