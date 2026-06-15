@@ -367,7 +367,7 @@ Low-fidelity wireframes were produced prior to development to plan the core page
 
 ### Matches Page
 
-![Matches page wireframe](docs/wireframes/sakina_profile_wireframe.png)
+![Matches page wireframe](docs/wireframes/sakina_matches_wireframe.png)
 
 
 ## Entity-Relationship Diagram (ERD)
