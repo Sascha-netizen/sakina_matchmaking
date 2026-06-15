@@ -1307,3 +1307,42 @@ The following accounts are available for assessment purposes.
 | Password | 2Hundchen |
 
 Both test users are active subscribers with completed profiles and a compatibility score of 82%. Log in as either to view matches, browse profiles, and test the messaging system.
+
+## Future Features
+
+### Real-Time Messaging with WebSockets
+
+The current messaging system uses standard HTTP requests. A future version would implement WebSockets via Django Channels, enabling real-time conversation updates without page refresh — a natural evolution of the platform's direct messaging feature that was descoped to keep the current implementation appropriately sized.
+
+### Wali Notification System
+
+Users who indicate a wali preference could have a dedicated contact flow allowing a guardian to be notified or included in early-stage communication, reflecting the role of the wali in traditional Islamic marriage practice.
+
+### Profile Verification
+
+A verification badge system for users who submit identity or background documentation, increasing trust between members and reducing the risk of misrepresentation.
+
+### Advanced Match Filtering
+
+Expanded filtering on the matches page by religiosity level, marital status, and education, giving subscribers finer control over the profiles they are shown.
+
+### Mobile App
+
+A React Native mobile application to complement the web platform, allowing users to manage their profile and messages on the go.
+
+
+## Credits
+
+### Code
+
+- [Code Institute Boutique Ado walkthrough](https://github.com/Code-Institute-Solutions/boutique_ado_v1) — structural reference for e-commerce patterns, Stripe integration, and deployment configuration
+
+### Media
+
+- Profile photos sourced from [Pexels](https://www.pexels.com/), [randomuser.me](https://randomuser.me/), and [thispersondoesnotexist.com](https://thispersondoesnotexist.com/)
+- Seeded profile data generated using [Faker](https://faker.readthedocs.io/)
+
+### Acknowledgements
+
+- **Tim** (Code Institute mentor) — for guidance and feedback throughout the project
+- **Abeer ElAshry** — for discussions about the platform concept and target audience
